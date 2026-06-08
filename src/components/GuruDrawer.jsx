@@ -202,7 +202,10 @@ export default function GuruDrawer({ open, onClose }) {
         {/* Header */}
         <div className="drawer-header">
           <button className="drawer-icon-btn" onClick={onClose} aria-label="History">
-            <img src={imgHistory} alt="" width={20} height={20} style={{ objectFit: 'contain', opacity: 0.7 }} />
+            <svg width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.7 }}>
+              <circle cx="10" cy="10" r="8.25" stroke="#81909f" strokeWidth="1.5"/>
+              <path d="M10 6v4.5l2.5 2.5" stroke="#81909f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span className="guru-title">OPTIONS GURU</span>

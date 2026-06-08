@@ -42,7 +42,8 @@ export default function BottomNav({ activeTab, onNavigate, onGuruOpen }) {
         <TabButton
           isActive={activeTab === 'options'}
           label="Options"
-          icon={activeTab === 'options' ? ICONS.options.active : ICONS.options.inactive}
+          activeIcon={ICONS.options.active}
+          inactiveIcon={ICONS.options.inactive}
           onClick={() => onNavigate('options')}
         />
 
@@ -50,7 +51,8 @@ export default function BottomNav({ activeTab, onNavigate, onGuruOpen }) {
         <TabButton
           isActive={activeTab === 'watchlist'}
           label="Watchlist"
-          icon={activeTab === 'watchlist' ? ICONS.watchlist.active : ICONS.watchlist.inactive}
+          activeIcon={ICONS.watchlist.active}
+          inactiveIcon={ICONS.watchlist.inactive}
           onClick={() => onNavigate('watchlist')}
         />
 
@@ -75,7 +77,8 @@ export default function BottomNav({ activeTab, onNavigate, onGuruOpen }) {
         <TabButton
           isActive={activeTab === 'portfolio'}
           label="Portfolio"
-          icon={activeTab === 'portfolio' ? ICONS.portfolio.active : ICONS.portfolio.inactive}
+          activeIcon={ICONS.portfolio.active}
+          inactiveIcon={ICONS.portfolio.inactive}
           onClick={() => onNavigate('portfolio')}
         />
 
@@ -83,7 +86,8 @@ export default function BottomNav({ activeTab, onNavigate, onGuruOpen }) {
         <TabButton
           isActive={activeTab === 'profile'}
           label="Profile"
-          icon={activeTab === 'profile' ? ICONS.profile.active : ICONS.profile.inactive}
+          activeIcon={ICONS.profile.active}
+          inactiveIcon={ICONS.profile.inactive}
           onClick={() => onNavigate('profile')}
         />
 
@@ -92,21 +96,29 @@ export default function BottomNav({ activeTab, onNavigate, onGuruOpen }) {
   )
 }
 
-function TabButton({ isActive, label, icon, onClick }) {
+function TabButton({ isActive, label, activeIcon, inactiveIcon, onClick }) {
   return (
     <button
       className="tab-btn"
-      style={{ opacity: isActive ? 1 : 0.6 }}
       onClick={onClick}
       aria-label={label}
     >
-      <img
-        src={icon}
-        alt=""
-        width={24}
-        height={24}
-        style={{ display: 'block', objectFit: 'contain', flexShrink: 0 }}
-      />
+      <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+        <img
+          src={inactiveIcon}
+          alt=""
+          width={24}
+          height={24}
+          style={{ display: 'block', objectFit: 'contain', opacity: isActive ? 0 : 1 }}
+        />
+        <img
+          src={activeIcon}
+          alt=""
+          width={24}
+          height={24}
+          style={{ position: 'absolute', inset: 0, objectFit: 'contain', opacity: isActive ? 1 : 0 }}
+        />
+      </div>
       <span
         className="tab-label"
         style={{ color: isActive ? '#00f3ac' : '#81909f' }}
