@@ -30,12 +30,8 @@ export default function App() {
     timeoutRef.current = setTimeout(() => {
       setPrevTab(null)
       setAnimating(false)
-    }, 200)
+    }, 160)
   }
-
-  const currentIndex = TABS.indexOf(activeTab)
-  const prevIndex    = prevTab ? TABS.indexOf(prevTab) : -1
-  const direction    = currentIndex > prevIndex ? 'forward' : 'backward'
 
   const ActivePage = TAB_COMPONENTS[activeTab]
   const PrevPage   = prevTab ? TAB_COMPONENTS[prevTab] : null
@@ -44,16 +40,13 @@ export default function App() {
     <div className="app-shell">
       <div className="page-container">
         {PrevPage && (
-          <div
-            key={`exit-${prevTab}`}
-            className={`page ${direction === 'forward' ? 'page-exit-to-left' : 'page-exit-to-right'}`}
-          >
+          <div key={`exit-${prevTab}`} className="page page-fade-out">
             <PrevPage />
           </div>
         )}
         <div
           key={`enter-${activeTab}`}
-          className={`page ${animating ? (direction === 'forward' ? 'page-enter-from-right' : 'page-enter-from-left') : ''}`}
+          className={`page${animating ? ' page-fade-in' : ''}`}
         >
           <ActivePage />
         </div>

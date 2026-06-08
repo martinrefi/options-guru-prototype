@@ -70,40 +70,22 @@ body {
   display: none;
 }
 
-.page-enter-from-right {
-  animation: slideInFromRight 180ms ease forwards;
+.page-fade-in {
+  animation: fadeIn 150ms ease forwards;
 }
 
-.page-enter-from-left {
-  animation: slideInFromLeft 180ms ease forwards;
+.page-fade-out {
+  animation: fadeOut 150ms ease forwards;
 }
 
-.page-exit-to-left {
-  animation: slideOutToLeft 180ms ease forwards;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.page-exit-to-right {
-  animation: slideOutToRight 180ms ease forwards;
-}
-
-@keyframes slideInFromRight {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
-}
-
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(0); }
-}
-
-@keyframes slideOutToLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
-}
-
-@keyframes slideOutToRight {
-  from { transform: translateX(0); }
-  to   { transform: translateX(100%); }
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* ── Typography ── */
@@ -274,8 +256,7 @@ h1, h2, h3 {
   bottom: 0;
   left: 0;
   right: 0;
-  /* ~85% of viewport height */
-  height: 95vh;
+  height: 85dvh;
   background: #0b0b0b;
   border-radius: 24px 24px 0 0;
   z-index: 201;
@@ -305,7 +286,7 @@ h1, h2, h3 {
   width: 40px;
   height: 4px;
   border-radius: 10px;
-  background: rgba(129, 144, 159, 0.4);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Drawer header row */
