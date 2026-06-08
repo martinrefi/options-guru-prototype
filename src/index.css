@@ -24,7 +24,7 @@ body {
 }
 
 #root {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
 /* ── App shell ── */
 .app-shell {
   width: 100%;          /* full width on mobile */
-  height: 100vh;
+  height: 100dvh;
   background: #0b0b0b;
   position: relative;
   overflow: hidden;
@@ -162,8 +162,9 @@ h1, h2, h3 {
   bottom: 0;
   left: 0;
   right: 0;
-  /* same height as Figma: 79.988px ≈ 80px */
-  height: 80px;
+  /* same height as Figma: 79.988px ≈ 80px + safe area for notch/home indicator */
+  height: calc(80px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
   /* gradient from Figma: solid #0b0b0b at 77.56% → transparent at top */
   background: linear-gradient(
     0.9586502556482799deg,
